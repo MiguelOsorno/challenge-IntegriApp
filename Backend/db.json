@@ -1,15 +1,9 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Juan",
-      "apellidos": "lopez",
-      "role": "usuarioA"
-    },
-    {
-      "id": 2,
-      "name": "pancho",
-      "role": "usuarioB"
+      "email": "olivier@mail.com",
+      "password": "$2a$10$tOWEFMnY9eF3HnCC9E61IeW4ombOfpK8d8hOKgAaIK6snvHrYitny",
+      "id": 1
     }
-  ]  
+  ]
 }
