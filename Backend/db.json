@@ -1,9 +1,3 @@
 {
-  "users": [
-    {
-      "email": "olivier@mail.com",
-      "password": "$2a$10$tOWEFMnY9eF3HnCC9E61IeW4ombOfpK8d8hOKgAaIK6snvHrYitny",
-      "id": 1
-    }
-  ]
+  "users": []
 }
