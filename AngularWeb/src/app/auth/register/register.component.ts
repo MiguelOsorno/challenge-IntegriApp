@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ValidationsService } from '../../services/validations.service';
+import { Router } from '@angular/router';
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +17,8 @@ export class RegisterComponent implements OnInit {
 
   constructor( private fb: FormBuilder,
                private authService: AuthService,
-               private validationsService: ValidationsService ) {
+               private validationsService: ValidationsService,
+               private router: Router ) {
     this.createForm();
   }
 
@@ -60,7 +64,18 @@ export class RegisterComponent implements OnInit {
     this.clearSpacesFields( userTemp );
 
     this.authService.createUser( userTemp )
-                    .subscribe( resp => console.log(resp)
+                    .subscribe( async(resp) => {
+                      console.log(resp);
+                      const res = await Swal.fire({
+                        icon: 'success',
+                        text: 'Registro exitoso',
+                        confirmButtonText: `Continuar`,
+                      });
+                      if( res.value ){
+                        this.router.navigateByUrl('/dashboard');
+                      }
+
+                    }
                     , err => console.log(err.error) );
 
   }

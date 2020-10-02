@@ -73,11 +73,11 @@ export class AuthService {
 
     const expire = new Date(decoded.exp).valueOf();
 
-    console.log(expire);
+    // console.log(expire);
 
     const dateCurrent = moment().unix();
 
-    console.log(dateCurrent);
+    // console.log(dateCurrent);
 
     return dateCurrent < expire;
 
