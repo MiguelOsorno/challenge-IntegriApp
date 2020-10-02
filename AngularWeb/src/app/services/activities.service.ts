@@ -21,6 +21,17 @@ export class ActivitiesService {
 
   }
 
+  deleteActivity( id: number ){
+
+    const token = this.authService.readToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${ token }`,
+      'Content-Type': 'application/json'
+    })
+
+    return this.http.delete(`${ this.url }/600/activities/${ id }`, { headers});
+  }
+
 
   createActivity( activity: IActivity ){
 
