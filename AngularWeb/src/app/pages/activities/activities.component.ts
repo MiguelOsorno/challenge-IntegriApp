@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivitiesService } from '../../services/activities.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-activities',
@@ -10,7 +11,8 @@ export class ActivitiesComponent implements OnInit {
 
   activities = [];
 
-  constructor( private activitiesService: ActivitiesService ) { }
+  constructor( private activitiesService: ActivitiesService,
+               private router: Router ) { }
 
   ngOnInit(): void {
     this.getActivitiesUser();
@@ -27,5 +29,8 @@ export class ActivitiesComponent implements OnInit {
                           });
   }
 
+  changeToFormCreate(){
+    this.router.navigateByUrl('dashboard/activities-create');
+  }
 
 }
