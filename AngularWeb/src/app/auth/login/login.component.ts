@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ValidationsService } from '../../services/validations.service';
 
-import jwt_decode from "jwt-decode";
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
@@ -70,8 +69,6 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser( userTemp )
                     .subscribe( (resp: any) => {
                                 console.log(resp);
-                                const decoded = jwt_decode(resp.accessToken);
-                                console.log(decoded);
                                 Swal.close();
                                 this.router.navigateByUrl('/dashboard');
                                 },
