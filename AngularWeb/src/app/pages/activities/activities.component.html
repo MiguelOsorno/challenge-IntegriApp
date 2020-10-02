@@ -17,8 +17,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let activitie of activities" class="bg-gray-100">
-        <td class="border px-4 py-2">{{ activitie.descripcion }}</td>
-        <td class="border px-4 py-2"></td>
+        <td class="border px-4 py-2">{{ activitie.description }}</td>
+        <td class="border px-4 py-2">{{ activitie.fecha | date:'short' }}</td>
         <td class="border px-4 py-2">{{ activitie.category }}</td>
       </tr>
     </tbody>
