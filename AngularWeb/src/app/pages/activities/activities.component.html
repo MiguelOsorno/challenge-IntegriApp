@@ -21,7 +21,7 @@
         <td class="border px-4 py-2">{{ activitie.description }}</td>
         <td class="border px-4 py-2">{{ activitie.fecha | date:'short' }}</td>
         <td class="border px-4 py-2">{{ activitie.category }}</td>
-        <td class="border px-4 py-2"><i class="fas fa-edit cursor-pointer" (click)="changeToFormEdit()"></i></td>
+        <td class="border px-4 py-2"><i class="fas fa-edit cursor-pointer" [routerLink]="['/dashboard/activities-edit', activitie.id]" ></i></td>
         <td class="border px-4 py-2"><i class="fas fa-trash-alt cursor-pointer" (click)="deleteActivity(activitie)"></i></td>
       </tr>
     </tbody>

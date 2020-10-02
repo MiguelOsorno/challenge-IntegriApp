@@ -63,8 +63,5 @@ export class ActivitiesComponent implements OnInit {
     this.router.navigateByUrl('dashboard/activities-create');
   }
 
-  changeToFormEdit(){
-    this.router.navigateByUrl('dashboard/activities-edit');
-  }
 
 }
