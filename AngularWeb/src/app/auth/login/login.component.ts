@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ValidationsService } from '../../services/validations.service';
 
+import jwt_decode from "jwt-decode";
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor( private fb: FormBuilder,
                private authService: AuthService,
-               private validationsService: ValidationsService ) {
+               private validationsService: ValidationsService,
+               private router: Router ) {
     this.createForm();
   }
 
@@ -47,19 +52,36 @@ export class LoginComponent implements OnInit {
   }
 
   save(){
-    console.log(this.form);
+    // console.log(this.form);
     if(this.form.invalid){
       return Object.values(this.form.controls).forEach( control =>{
         control.markAllAsTouched();
       })
     }
 
+    Swal.fire({  allowOutsideClick: false,
+                 icon: 'info',
+                  text: 'Espera por Favor..'});
+    Swal.showLoading();
+
     const userTemp = { ...this.form.value };
     this.clearSpacesFields( userTemp );
 
     this.authService.loginUser( userTemp )
-                    .subscribe( resp => console.log(resp),
-                                err => console.log(err));
+                    .subscribe( (resp: any) => {
+                                console.log(resp);
+                                const decoded = jwt_decode(resp.accessToken);
+                                console.log(decoded);
+                                Swal.close();
+                                this.router.navigateByUrl('/dashboard');
+                                },
+                                (err) => {
+                                  console.log(err);
+                                  Swal.fire({
+                                    icon: 'error',
+                                    text: 'Error al autenticar',
+                                  });
+                                });
 
   }
 
