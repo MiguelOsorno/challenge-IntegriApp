@@ -1,1 +1,19 @@
-<p>activities works!</p>
+<h1 class="text-gray-700 lg:text-2xl font-bold text-center">Actividades</h1>
+<div class="flex justify-center">
+    <table class="table-auto">
+        <thead>
+          <tr>
+            <th class="px-4 py-2">Descripción</th>
+            <th class="px-4 py-2">Fecha</th>
+            <th class="px-4 py-2">Categoría</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let activitie of activities" class="bg-gray-100">
+            <td class="border px-4 py-2">{{ activitie.descripcion }}</td>
+            <td class="border px-4 py-2"></td>
+            <td class="border px-4 py-2">{{ activitie.category }}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

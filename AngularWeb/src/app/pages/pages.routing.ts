@@ -10,7 +10,8 @@ const routes: Routes = [
         component: DashboardComponent,
         canActivate: [ AuthGuard ],
         children: [
-            { path: 'activities', component: ActivitiesComponent }
+            { path: 'activities', component: ActivitiesComponent },
+            { path: '', redirectTo: 'activities', pathMatch: 'full' }
         ]
     }
 ];

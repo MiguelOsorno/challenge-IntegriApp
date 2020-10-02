@@ -58,7 +58,11 @@ export class AuthService {
   }
 
 
-
+  getIdUserOfToken(){
+    const token: any =  this.readToken();
+    const decoded = jwt_decode(token);
+    return decoded.sub;
+  }
 
 
 
